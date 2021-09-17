@@ -1,0 +1,72 @@
+<div class="row justify-content-around">
+    <div class="col-4">
+        <div class="mb-5" style="position: relative; height:400px; text-align:center">
+            <canvas id="timeChart"></canvas>
+            <h3 style="position: relative; bottom:200px;"><%= timePercent %>% </h3>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="mb-5" style="position: relative; height:400px; text-align:center">
+            <canvas id="numChart"></canvas>
+            <h3 style="position: relative; bottom:200px;"><%= numPercent %>% </h3>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="/javascripts/dashboardChart.js"></script> -->
+    <script>
+        const tChart = document.getElementById('timeChart');
+const myChart = new Chart(tChart, {
+    type: 'doughnut',
+    data: {
+        labels: ['Time spent on Reading', 'Remaining time'],
+        datasets: [{
+            // label: '# of Votes',
+            data: [<%= totalHr %>, <%=timeRemain %> ], //[total hours, goal hours]
+            backgroundColor: [
+                'rgba(96, 150, 186, 0.8)',
+                'rgba(231, 236, 239, 0.8)'
+            ],
+            borderColor: [
+                'rgba(96, 150, 186, 1)',
+                'rgba(231, 236, 239, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+    </script>
+
+
+
+    <script>
+        const nChart = document.getElementById('numChart');
+        const myChart2 = new Chart(nChart, {
+            type: 'doughnut',
+            data: {
+                labels: ['Number of Books Read', 'Remaining Numbers'],
+                datasets: [{
+                    // label: '# of Votes',
+                    data: [<%=totalNum%>, <%=numRemain %> ], //[total hours, goal hours]
+                    backgroundColor: [
+                        'rgba(96, 150, 186, 0.8)',
+                        'rgba(231, 236, 239, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(96, 150, 186, 1)',
+                        'rgba(231, 236, 239, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>

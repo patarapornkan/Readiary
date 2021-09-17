@@ -1,0 +1,16 @@
+<% layout('/layouts/boilerplate') %>
+
+<h1>Readiary</h1>
+
+<%- include('../partials/timeChart') %>
+
+<% for (let record of records){ %>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title"><%= record.date.toDateString() %></h1>
+            <h6 class="card-subtitle"><%= record.bookName %> </h2>
+            <p>memo: <%= record.memo %> </p>
+        </div>
+    </div>
+    
+<% } %>
